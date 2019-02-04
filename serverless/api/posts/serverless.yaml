@@ -16,10 +16,10 @@ provider:
       users/me:
         Fn::ImportValue: 'postsapi-${opt:stage}-ApiGatewayResourceUsersMe'
   environment:
-    USERS_TABLE:
-      Fn::ImportValue: postsapi-${opt:stage}-UsersTable
-    POSTS_TABLE:
-      Fn::ImportValue: postsapi-${opt:stage}-PostsTable
+    # USERS_TABLE:
+    #   Fn::ImportValue: postsapi-${opt:stage}-UsersTable
+    # POSTS_TABLE:
+    #   Fn::ImportValue: postsapi-${opt:stage}-PostsTable
 custom:
   webpack:
     includeModules:

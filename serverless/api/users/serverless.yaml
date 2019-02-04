@@ -18,10 +18,10 @@ provider:
   environment:
     # NOTE: change this before deploying
     SECRET: ${self:custom.config.encryption.secret}
-    USERS_TABLE:
-      Fn::ImportValue: postsapi-${opt:stage}-UsersTable
+    # USERS_TABLE:
+    #   Fn::ImportValue: postsapi-${opt:stage}-UsersTable
 custom:
-  config: ${file(../../config.yaml)}
+  config: ${file(../../config.yml)}
   webpack:
     includeModules:
       forceExclude:
