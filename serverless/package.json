@@ -1,0 +1,25 @@
+{
+  "name": "splitstack-postsapi",
+  "version": "1.0.0",
+  "description": "An example of split serverless stacks",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.395.0",
+    "jsonwebtoken": "^8.3.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "serverless-offline": "^4.2.1",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^4.17.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "start": "nodemon --exec \"serverless offline start --stage dev --region ap-southeast-2 --host 0.0.0.0 --noTimeout --dontPrintOutput --skipCacheInvalidation\""
+  },
+  "author": "GorillaStack Pty Ltd",
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/GorillaStack/splitstack-postsapi.git"
+  }
+}
