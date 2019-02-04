@@ -37,7 +37,7 @@ package:
     - ../../node_modules
 functions:
   postsCreate:
-    handler: postsCreate.handler
+    handler: handler.postsCreate
     events:
       - http:
           method: POST
@@ -45,7 +45,7 @@ functions:
           integration: lambda-proxy
           authorizer: ${self:custom.authorizer}
   postsList:
-    handler: postsList.handler
+    handler: handler.postsList
     events:
       - http:
           method: GET
@@ -53,7 +53,7 @@ functions:
           integration: lambda-proxy
           # authorizer: ${self:custom.authorizer}
   postsByUser:
-    handler: postsByUser.handler
+    handler: handler.postsByUser
     events:
       - http:
           method: GET
