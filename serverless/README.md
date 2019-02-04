@@ -146,6 +146,7 @@ for more details.
 set up vmr staing account access key into local credentials
 
 deployment cmd
+
 serverless deploy --aws-profile vmr-staging-serverless-test-user --stage dev --region ap-southeast-1
 
 

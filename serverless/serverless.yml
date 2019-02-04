@@ -31,7 +31,7 @@ functions:
       SECRET: ${self:custom.config.encryption.secret}
 custom:
   # NOTE: Change this if you plan to use/deploy this template!
-  config: ${file(config.yaml)}
+  config: ${file(config.yml)}
 resources:
   Resources:
 
@@ -85,50 +85,50 @@ resources:
           Fn::Join: ["",["apigateway.", { Ref: "AWS::URLSuffix"}]]
     
     # Tables
-    UsersTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: postsapi-${opt:stage}-users
-        AttributeDefinitions:
-          - 
-            AttributeName: userId
-            AttributeType: S
-        KeySchema:
-          - 
-            AttributeName: userId
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-    PostsTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: postsapi-${opt:stage}-posts
-        AttributeDefinitions:
-          - 
-            AttributeName: postId
-            AttributeType: S
-          - 
-            AttributeName: userId
-            AttributeType: S
-        KeySchema:
-          - 
-            AttributeName: postId
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        GlobalSecondaryIndexes:
-          - IndexName: userId
-            KeySchema:
-              - 
-                AttributeName: userId
-                KeyType: HASH
-            Projection:
-              ProjectionType: ALL
-            ProvisionedThroughput:
-              ReadCapacityUnits: 1
-              WriteCapacityUnits: 1
+    # UsersTable:
+    #   Type: AWS::DynamoDB::Table
+    #   Properties:
+    #     TableName: postsapi-${opt:stage}-users
+    #     AttributeDefinitions:
+    #       - 
+    #         AttributeName: userId
+    #         AttributeType: S
+    #     KeySchema:
+    #       - 
+    #         AttributeName: userId
+    #         KeyType: HASH
+    #     ProvisionedThroughput:
+    #       ReadCapacityUnits: 1
+    #       WriteCapacityUnits: 1
+    # PostsTable:
+      # Type: AWS::DynamoDB::Table
+      # Properties:
+      #   TableName: postsapi-${opt:stage}-posts
+      #   AttributeDefinitions:
+      #     - 
+      #       AttributeName: postId
+      #       AttributeType: S
+      #     - 
+      #       AttributeName: userId
+      #       AttributeType: S
+      #   KeySchema:
+      #     - 
+      #       AttributeName: postId
+      #       KeyType: HASH
+      #   ProvisionedThroughput:
+      #     ReadCapacityUnits: 1
+      #     WriteCapacityUnits: 1
+      #   GlobalSecondaryIndexes:
+      #     - IndexName: userId
+      #       KeySchema:
+      #         - 
+      #           AttributeName: userId
+      #           KeyType: HASH
+      #       Projection:
+      #         ProjectionType: ALL
+      #       ProvisionedThroughput:
+      #         ReadCapacityUnits: 1
+      #         WriteCapacityUnits: 1
 
   Outputs:
     # RestApi resource ID (e.g. ei829oe)
@@ -167,13 +167,13 @@ resources:
       Export:
         Name: postsapi-${opt:stage}-ApiGatewayResourceUsersMe
     # Table Resources
-    UsersTable:
-      Value:
-        Ref: UsersTable
-      Export:
-        Name: postsapi-${opt:stage}-UsersTable
-    PostsTable:
-      Value:
-        Ref: PostsTable
-      Export:
-        Name: postsapi-${opt:stage}-PostsTable
+    # UsersTable:
+    #   Value:
+    #     Ref: UsersTable
+    #   Export:
+    #     Name: postsapi-${opt:stage}-UsersTable
+    # PostsTable:
+    #   Value:
+    #     Ref: PostsTable
+    #   Export:
+    #     Name: postsapi-${opt:stage}-PostsTable
