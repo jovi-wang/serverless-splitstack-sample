@@ -1,5 +1,5 @@
 token:
-  handler: handlers/userHandler.token
+  handler: ../../handlers/userHandler.token
   events:
     - http:
         method: POST
@@ -7,7 +7,7 @@ token:
         integration: lambda-proxy
 
 usersCreate:
-  handler: handlers/userHandler.userCreate
+  handler: ../../handlers/userHandler.userCreate
   events:
     - http:
         method: POST
@@ -16,7 +16,7 @@ usersCreate:
         # authorizer: ${self:custom.authorizer}
 
 testScanUser:
-  handler: handlers/userHandler.testHandler
+  handler: ../../handlers/userHandler.testHandler
   events:
     - http:
         method: GET

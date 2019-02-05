@@ -2,10 +2,9 @@ const jsonwebtoken = require('jsonwebtoken');
 const AWS = require('aws-sdk');
 const crypto = require('crypto');
 const uuid = require('uuid');
-const { errorResponse } = require('../../helpers/helper');
+const { errorResponse } = require('../helpers/helper');
 const dbUtil = require('../utils/dbUtil');
 const { UserSchema } = require('../models');
-
 
 module.exports.token = async event => {
   let body;
@@ -14,11 +13,9 @@ module.exports.token = async event => {
   } catch (err) {
     return errorResponse(400, 'bad body');
   }
-
   if (!body.userId || !body.password) {
     return errorResponse(400, 'missing userId or password');
   }
-
   const dc = new AWS.DynamoDB.DocumentClient();
   const result = await dc.get({
     TableName: process.env.USERS_TABLE,
@@ -73,7 +70,9 @@ module.exports.userCreate = async event => {
 
 module.exports.testHandler = async (event) => {
   try {
+    console.log(UserSchema)
     const dbResults = await dbUtil.scanAll('devUser', UserSchema);
+    console.log(dbResults)
     return {
       statusCode: 200,
       body: JSON.stringify({
