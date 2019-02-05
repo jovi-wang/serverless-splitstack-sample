@@ -37,18 +37,4 @@ package:
   include:
     - ../../node_modules
 functions:
-  token:
-    handler: token.handler
-    events:
-      - http:
-          method: POST
-          path: /token
-          integration: lambda-proxy
-  usersCreate:
-    handler: usersCreate.handler
-    events:
-      - http:
-          method: POST
-          path: /users
-          integration: lambda-proxy
-          # authorizer: ${self:custom.authorizer}
+  - ${file(../../routes/v2/user.yml)}

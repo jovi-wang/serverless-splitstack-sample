@@ -1,19 +1,9 @@
-const { REGION, IS_OFFLINE, DB_PREFIX } = require('../config/settings');
-
+const { DB_PREFIX } = require('../config/setting');
 const dynamoose = require('dynamoose');
 
 dynamoose.AWS.config.update({
-  region: REGION,
+  region: 'ap-southeast-1',
 });
-
-const offlineTest = IS_OFFLINE === 'true';
-if (offlineTest) {
-  dynamoose.local('http://localhost:4569');
-}
-
-if (process.env.IS_LOCALSTACK === 'true') {
-  dynamoose.local('http://localstack:4569');
-}
 
 dynamoose.setDefaults({
   create: offlineTest, // Create table in DB, if it does not exist,
