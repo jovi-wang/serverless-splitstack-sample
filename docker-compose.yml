@@ -6,3 +6,6 @@ services:
     command: bash -c "sh -c /tmp/entrypoint.sh"    
     restart: always
     tty: true
+    #do not mount file ./serverless to docker image
+    ports:
+      - 3000:3000

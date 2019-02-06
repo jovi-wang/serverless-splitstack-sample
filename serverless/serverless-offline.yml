@@ -6,6 +6,10 @@ provider:
     - Effect: Allow
       Action: "*"
       Resource: "*"
-      
+plugins:
+  - serverless-offline
+custom:
+  serverless-offline:
+    host: 0.0.0.0
 functions:
   - ${file(./routes/v2/user.yml)}
