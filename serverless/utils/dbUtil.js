@@ -4,6 +4,7 @@ const dynamoose = require('dynamoose');
 dynamoose.AWS.config.update({
   region: 'ap-southeast-1',
 });
+const offlineTest = false;
 
 dynamoose.setDefaults({
   create: offlineTest, // Create table in DB, if it does not exist,
@@ -47,7 +48,9 @@ exports.saveOne = async (modelName, schema, saveParam) => {
 // work for both single hashkey and composite key
 exports.getOne = async (modelName, schema, keyParam) => {
   try {
+    console.log(modelName, schema, keyParam);
     const model = dynamoose.model(modelName, schema);
+    console.log(model);
     return await model.get(keyParam);
   } catch (err) {
     console.log('error in getOne', modelName, keyParam, err);

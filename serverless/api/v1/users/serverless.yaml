@@ -1,0 +1,36 @@
+service: postsapi-v1-users
+provider:
+  name: aws
+  runtime: nodejs8.10
+  memorySize: 1024MB
+  timeout: 10
+  role:
+    Fn::ImportValue: postsapi-IamRoleLambdaExecution
+  apiGateway:
+    restApiId: 
+      Fn::ImportValue: 'postsapi-base-${opt:stage}-RestApiId'
+    restApiRootResourceId:
+      Fn::ImportValue: 'postsapi-base-${opt:stage}-RootResourceId'
+    restApiResources:
+      v1: { 'Fn::ImportValue': 'postsapi-base-${opt:stage}-ApiGatewayResourceRootV1' }
+  environment:
+    # NOTE: change this before deploying
+    SECRET: ${self:custom.config.encryption.secret}
+    # USERS_TABLE:
+    #   Fn::ImportValue: postsapi-${opt:stage}-UsersTable
+custom:
+  config: ${file(../../../config.yml)}
+  webpack:
+    includeModules:
+      packagePath: ../../../package.json
+  # authorizer:
+  #   type: CUSTOM
+  #   authorizerId: 
+  #     Fn::ImportValue: postsapi-${opt:stage}-ApiGatewayAuthorizerId
+plugins:
+  - serverless-webpack
+package:
+  include:
+    - ../../../node_modules
+functions:
+  - ${file(user.yml)}

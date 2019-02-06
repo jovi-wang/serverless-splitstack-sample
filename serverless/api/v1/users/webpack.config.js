@@ -7,6 +7,6 @@ module.exports = {
   entry: slsw.lib.entries,
   mode: 'none',
   externals: [nodeExternals({
-    modulesDir: path.join(__dirname, '../../node_modules'),
+    modulesDir: path.join(__dirname, '../../../node_modules')
   })]
 };

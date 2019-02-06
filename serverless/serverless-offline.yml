@@ -8,4 +8,4 @@ provider:
       Resource: "*"
       
 functions:
-  - ${file(./routes/v1/category.yml)}
+  - ${file(./routes/v2/user.yml)}

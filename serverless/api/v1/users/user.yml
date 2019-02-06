@@ -1,0 +1,6 @@
+testGetSingleUserV1:
+  handler: userHandler.testHandler
+  events:
+    - http:
+        method: GET
+        path: /v1/users

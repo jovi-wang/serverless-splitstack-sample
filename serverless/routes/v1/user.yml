@@ -1,4 +1,4 @@
-testGetSingleUserV2:
+testGetSingleUserV1:
   handler: api/v1/users/userHandler.testHandler
   events:
     - http:
