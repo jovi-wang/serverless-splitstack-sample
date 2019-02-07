@@ -7,5 +7,7 @@ services:
     restart: always
     tty: true
     #do not mount file ./serverless to docker image
+    volumes:
+      - ./serverless:/app/
     ports:
       - 3000:3000

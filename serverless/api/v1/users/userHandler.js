@@ -8,6 +8,8 @@ const { UserSchema } = require('../../../models');
 const dbUtil = require('../../../utils/dbUtil');
 
 
+
+
 module.exports.testHandler = async (event) => {
   try {
     const dbResults = await dbUtil.getOne('User', UserSchema, {email:'abc@test.com', sub: 'sub-abc'});

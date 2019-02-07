@@ -12,4 +12,4 @@ custom:
   serverless-offline:
     host: 0.0.0.0
 functions:
-  - ${file(./routes/v2/user.yml)}
+  - ${file(../routes-offline/v2/user.yml)}

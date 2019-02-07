@@ -14,6 +14,8 @@ dynamoose.setDefaults({
   prefix: DB_PREFIX,
 });
 
+
+
 exports.queryOne = async (modelName, schema, queryParam) => {
   try {
     const model = dynamoose.model(modelName, schema);
