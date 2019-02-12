@@ -10,6 +10,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "babel-loader": "^8.0.5",
     "nodemon": "^1.18.9",
     "serverless-offline": "^4.2.1",
     "serverless-webpack": "^5.2.0",
@@ -17,7 +18,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "nodemon --exec \"cd offline && serverless offline start --stage dev --region ap-southeast-1 --host 0.0.0.0 --noTimeout --dontPrintOutput --skipCacheInvalidation\""
+    "start": "nodemon --exec \"serverless offline start --stage dev --region ap-southeast-1 --host 0.0.0.0 --noTimeout --dontPrintOutput --skipCacheInvalidation\""
   },
   "author": "GorillaStack Pty Ltd",
   "license": "ISC",

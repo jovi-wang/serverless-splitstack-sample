@@ -151,3 +151,5 @@ serverless deploy --aws-profile vmr-staging-serverless-test-user --stage dev --r
 
 
 serverless remove --aws-profile vmr-staging-serverless-test-user --stage dev --region ap-southeast-1
+
+for deployment, remove serverless.yml and rename serverless-deploy.yml into serverless.yml
