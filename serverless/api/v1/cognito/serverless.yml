@@ -1,0 +1,41 @@
+service: test-serverless-cognito
+provider:
+  name: aws
+  runtime: nodejs8.10
+  iamRoleStatements:
+    - Effect: Allow
+      Action: "*"
+      Resource: "*"
+  
+functions:
+  testGetSingleUserV1:
+    handler: handler.post
+    events:
+      - http:
+          method: POST
+          path: /v1/users
+          authorizer:
+            arn: arn:aws:cognito-idp:ap-southeast-1:471402393260:userpool/ap-southeast-1_SctcfvUIf
+
+
+  testGetSingleUserV2:
+    handler: handler.get
+    events:
+      - http:
+          method: GET
+          path: /v1/users
+          authorizer:
+            arn: arn:aws:cognito-idp:ap-southeast-1:471402393260:userpool/ap-southeast-1_SctcfvUIf
+  PostAuthentication:
+    handler: handler.PostAuthentication
+    events:
+      # - cognitoUserPool:
+      #     pool: test-user-pool
+      #     trigger: PostAuthentication
+# use cognito as authorizer token should be id token rather than access token
+
+# serverless does not connect to existing user pool, otherwise need to write more cloudformation code
+# https://forum.serverless.com/t/linking-lambda-function-to-an-exiting-user-pool/4688/2
+
+# use cognito user pool trigger lambda function, return event it self
+
