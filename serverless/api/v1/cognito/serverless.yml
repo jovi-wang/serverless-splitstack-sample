@@ -29,10 +29,24 @@ functions:
   PostAuthentication:
     handler: handler.PostAuthentication
     events:
-      # - cognitoUserPool:
-      #     pool: test-user-pool
-      #     trigger: PostAuthentication
-# use cognito as authorizer token should be id token rather than access token
+      - cognitoUserPool:
+          pool: test-user-pool
+          trigger: PostAuthentication
+
+# 1 use cognito user pool as authorizer: 
+# in header auth token should be id token and DO NOT use access token (this takes me long time to figure out)
+# we need to hard coded an existing cognito user pool arn in the lambda's authorizer section
+
+# 2 user cognito user pool to trigger a lambda function
+# it is super hard to connect to an existing user pool. We have to write a complicated cloudformation (see link below)
+# https://forum.serverless.com/t/linking-lambda-function-to-an-exiting-user-pool/4688/2
+
+# As a result i suggest we dont assign event to the lambda but manully assign cognito trigger to it,
+# also i would assume we need to manage cognito user pool in portal (e.g. we sometimes want to disable/add/manage individual user, add new client apps)
+# and all user identity infomation is stateful infracture like database, and we dont want to put create cognito user pool in serverless.yml
+
+# i would say we might end up creating and managing cognito user pool via portal like auth0, and i generally feeling using either terraform or cloudformation to create cognito user pool would be challenging 
+# and the setting for the user pool will evolve and hard to manage(think about managing all settings from other federated identity providers)
 
 # serverless does not connect to existing user pool, otherwise need to write more cloudformation code
 # https://forum.serverless.com/t/linking-lambda-function-to-an-exiting-user-pool/4688/2

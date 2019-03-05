@@ -7,6 +7,7 @@
     "aws-sdk": "^2.395.0",
     "dynamoose": "^1.5.0",
     "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.11",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
