@@ -1,0 +1,1 @@
+const a = `token=m2GM275b7205B9WPUZQRDLR8&team_id=T51SR7JVB&team_domain=vmrcompanion&channel_id=CGTBCAYC9&channel_name=test&user_id=U6AGRT5QS&user_name=jovi&command=%2Fwfh&text=&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FT51SR7JVB%2F573194828055%2FcpHI5nuCHz0kX7H2AlMUzRxo&trigger_id=573559450198.171909256997.a87b8c946f1b98c2a7e717d3e0f5f387`;
