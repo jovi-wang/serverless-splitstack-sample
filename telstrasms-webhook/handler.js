@@ -52,7 +52,7 @@ exports.smsReceiver = async (event) => {
         to: RECEIVER_MOBILE_NUMBER,
         validity: '60',
         priority: true,
-        body: JSON.parse(event.body).body
+        body: event.body
       },
       json: true
     };
