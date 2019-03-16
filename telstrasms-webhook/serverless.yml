@@ -1,0 +1,27 @@
+service: telstrasms-webhook
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+plugins:
+  - serverless-webpack
+custom:
+  webpackIncludeModules: true 
+
+provider:
+  name: aws
+  stage: ${opt:stage}
+  runtime: nodejs8.10
+  region: ${opt:region}
+    
+functions:
+  smsReceiver:
+    handler: handler.smsReceiver
+    environment:
+      TELSTRA_SMS_HOST: 'https://tapi.telstra.com'
+      TELSTRA_SMS_CLIENT_ID: 'client_id'
+      TELSTRA_SMS_CLIENT_SECRET: 'client_secert'
+      RECEIVER_MOBILE_NUMBER: '+614444444'
+    events:
+      - http:
+          method: POST
+          path: /receiver
+    

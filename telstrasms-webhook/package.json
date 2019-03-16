@@ -1,0 +1,21 @@
+{
+  "name": "telstrasms-webhook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-rallycoding": "^3.2.0",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^4.29.6",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
