@@ -1,0 +1,49 @@
+service: lambda-warmup
+
+frameworkVersion: ">=1.12.0 <2.0.0"
+
+plugins:
+  - serverless-plugin-warmup
+custom:
+  warmup:
+    enabled: true
+    events:
+      - schedule: rate(15 minutes)
+
+provider:
+  name: aws
+  stage: ${opt:stage}
+  runtime: nodejs8.10
+  region: ${opt:region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "iot:*"
+      Resource: "arn:aws:iot:*:*:*" 
+    - Effect: 'Allow'
+      Action:
+        - 'lambda:InvokeFunction'
+      Resource:
+      - Fn::Join:
+        - ':'
+        - - arn:aws:lambda
+          - Ref: AWS::Region
+          - Ref: AWS::AccountId
+          - function:${self:service}-${opt:stage, self:provider.stage}-*
+    
+functions:
+  coldHandler1:
+    handler: handler1.coldHandler
+    events:
+      - http:
+          method: POST
+          path: /hander
+  coldHandler2:
+    handler: handler2.coldHandler
+    events:
+      - http:
+          method: GET
+          path: /hander
+    warmup:
+      enabled: false
+    
